@@ -1,0 +1,147 @@
+.settings-page {
+  padding: 28px;
+  color: #1e293b;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.settings-header h1 {
+  font-size: 28px;
+  margin-bottom: 7px;
+}
+
+.settings-header p {
+  color: #64748b;
+}
+
+.settings-header svg {
+  color: #2563eb;
+}
+
+.settings-section {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.settings-section-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.settings-section-title>svg {
+  color: #2563eb;
+}
+
+.settings-section-title h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.settings-section-title p {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.settings-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.settings-field label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.settings-field input {
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.settings-field input:focus {
+  border-color: #2563eb;
+}
+
+.settings-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 0;
+  border-top: 1px solid #f1f5f9;
+}
+
+.settings-option h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.settings-option p {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.settings-option input {
+  width: 19px;
+  height: 19px;
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+.settings-security-text {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.settings-save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.settings-save-btn:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 650px) {
+  .settings-page {
+    padding: 16px;
+  }
+
+  .settings-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-section {
+    padding: 18px;
+  }
+}

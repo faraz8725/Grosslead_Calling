@@ -1,0 +1,149 @@
+.navbar {
+  height: 75px;
+  background: #ffffff;
+  border-bottom: 1px solid #edf0f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.menu-button {
+  display: none;
+  border: none;
+  background: transparent;
+  color: #293854;
+  cursor: pointer;
+}
+
+.navbar-search {
+  width: 300px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 13px;
+  border-radius: 8px;
+  background: #f5f7fb;
+  color: #8b97aa;
+}
+
+.navbar-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12px;
+  color: #27334a;
+}
+
+.notification-wrapper {
+  position: relative;
+}
+
+.notification-button {
+  border: none;
+  background: transparent;
+  color: #71809a;
+  position: relative;
+  cursor: pointer;
+  padding: 7px;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 7px;
+  width: 7px;
+  background: #ed6464;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  width: 230px;
+  background: white;
+  border: 1px solid #edf0f5;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(20, 35, 60, 0.12);
+  padding: 18px;
+}
+
+.notification-dropdown strong {
+  font-size: 13px;
+}
+
+.notification-dropdown p {
+  color: #8792a4;
+  font-size: 12px;
+  margin: 15px 0 0;
+}
+
+.navbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #71809a;
+}
+
+.navbar-avatar {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background: #e9edff;
+  color: #536ce6;
+  display: grid;
+  place-items: center;
+  font-weight: 750;
+}
+
+.navbar-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navbar-user-info strong {
+  font-size: 12px;
+  color: #293854;
+}
+
+.navbar-user-info span {
+  font-size: 10px;
+  text-transform: capitalize;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 18px;
+  }
+
+  .menu-button {
+    display: block;
+  }
+}
+
+@media (max-width: 550px) {
+  .navbar-search {
+    width: 165px;
+  }
+
+  .navbar-user-info,
+  .navbar-profile>svg {
+    display: none;
+  }
+}

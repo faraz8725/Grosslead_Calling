@@ -1,0 +1,195 @@
+.calls-page {
+  padding: 28px;
+  color: #1e293b;
+}
+
+.calls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.calls-header h1 {
+  font-size: 28px;
+  margin-bottom: 7px;
+}
+
+.calls-header p {
+  color: #64748b;
+}
+
+.calls-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 17px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.calls-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.calls-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.calls-summary-card svg {
+  color: #2563eb;
+}
+
+.calls-summary-card span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.calls-summary-card h2 {
+  margin-top: 6px;
+}
+
+.calls-toolbar {
+  margin-bottom: 18px;
+}
+
+.calls-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+  padding: 12px 15px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+}
+
+.calls-search svg {
+  color: #64748b;
+}
+
+.calls-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.calls-table-wrapper {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.calls-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+
+.calls-table th,
+.calls-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.calls-table th {
+  color: #64748b;
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.call-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.call-status-success {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.call-status-failed {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.call-status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.calls-actions {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.calls-actions a,
+.calls-actions button {
+  color: #2563eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.calls-actions button {
+  color: #dc2626;
+}
+
+.calls-empty,
+.calls-message {
+  padding: 45px 20px;
+  text-align: center;
+  color: #64748b;
+}
+
+.calls-empty h3 {
+  margin: 12px 0 7px;
+  color: #1e293b;
+}
+
+.calls-error {
+  color: #dc2626;
+}
+
+.calls-error button {
+  display: block;
+  margin: 12px auto 0;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .calls-page {
+    padding: 16px;
+  }
+
+  .calls-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .calls-summary {
+    grid-template-columns: 1fr;
+  }
+}

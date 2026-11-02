@@ -1,0 +1,100 @@
+.call-details-page {
+  padding: 28px;
+  width: 100%;
+  color: #1e293b;
+}
+
+.call-details-header {
+  margin-bottom: 28px;
+}
+
+.call-details-header h1 {
+  font-size: 28px;
+  margin: 16px 0 6px;
+}
+
+.call-details-header p {
+  color: #64748b;
+}
+
+.back-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.call-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.call-info-card,
+.call-details-section {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.call-info-card span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.call-info-card h3 {
+  font-size: 17px;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+}
+
+.call-details-section {
+  margin-bottom: 22px;
+}
+
+.call-details-section h2 {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.call-details-section audio {
+  width: 100%;
+}
+
+.transcript-box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.transcript-message {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 9px;
+  border: 1px solid #e2e8f0;
+}
+
+.transcript-message p {
+  margin-top: 7px;
+  line-height: 1.6;
+}
+
+.error-message {
+  color: #dc2626;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .call-details-page {
+    padding: 16px;
+  }
+
+  .call-info-grid {
+    grid-template-columns: 1fr;
+  }
+}

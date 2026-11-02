@@ -1,0 +1,138 @@
+.add-lead-page {
+  padding: 30px;
+}
+
+.back-leads {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: transparent;
+  color: #6179e8;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.add-lead-heading {
+  margin-bottom: 25px;
+}
+
+.add-lead-heading h1 {
+  font-size: 26px;
+  color: #1d2b46;
+  margin-bottom: 9px;
+}
+
+.add-lead-heading p {
+  font-size: 12px;
+  color: #8792a4;
+}
+
+.add-lead-form {
+  background: white;
+  padding: 28px;
+  border: 1px solid #edf0f5;
+  border-radius: 13px;
+  max-width: 850px;
+}
+
+.add-lead-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 23px;
+  margin-bottom: 22px;
+}
+
+.add-lead-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.add-lead-field label {
+  color: #40506a;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.add-lead-field input,
+.add-lead-field textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #e3e8f0;
+  border-radius: 8px;
+  outline: none;
+  font-size: 12px;
+  color: #293750;
+  resize: vertical;
+}
+
+.add-lead-field input:focus,
+.add-lead-field textarea:focus {
+  border-color: #6179e8;
+  box-shadow: 0 0 0 3px rgba(97, 121, 232, 0.08);
+}
+
+.add-lead-field input::placeholder,
+.add-lead-field textarea::placeholder {
+  color: #a2adbc;
+}
+
+.add-lead-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #edf0f5;
+  padding-top: 22px;
+}
+
+.add-lead-footer button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.cancel-lead {
+  border: 1px solid #e3e8f0;
+  background: white;
+  color: #64718a;
+}
+
+.save-lead {
+  border: none;
+  background: #6179e8;
+  color: white;
+}
+
+.save-lead:disabled {
+  opacity: 0.6;
+}
+
+.add-lead-error {
+  color: #c62828;
+  background: #fff0f0;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  .add-lead-page {
+    padding: 20px 14px;
+  }
+
+  .add-lead-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .add-lead-form {
+    padding: 18px;
+  }
+}
