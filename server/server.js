@@ -10,6 +10,9 @@ const cookieParser = require("cookie-parser");
 const rateLimit = require("express-rate-limit");
 const { WebSocketServer } = require("ws");
 
+
+const ensureAdmin = require("./utils/ensureAdmin");
+
 const leadRoutes = require("./routes/leadRoutes");
 const callRoutes = require("./routes/callRoutes");
 const connectDB = require("./config/db");
@@ -96,6 +99,7 @@ wss.on("connection", (websocket) => {
 const startServer = async () => {
   try {
     await connectDB();
+    await ensureAdmin();
     server.listen(PORT, () => {
       console.log(`Backend running on port ${PORT}`);
       console.log(`Vobiz WebSocket ready at /ws`);
