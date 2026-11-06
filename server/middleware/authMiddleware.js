@@ -1,4 +1,4 @@
-
+/*
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
@@ -55,3 +55,60 @@ module.exports = {
   protect,
   adminOnly
 };
+*/
+
+
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
+
+const protect = async (req, res, next) => {
+  try {
+    const token = req.cookies?.token;
+
+    if (!token) {
+      return res.status(401).json({
+        success: false,
+        message: "Please login first"
+      });
+    }
+
+    if (!process.env.JWT_SECRET) {
+      throw new Error("JWT_SECRET is missing");
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const user = await User.findById(decoded.id);
+
+    if (!user || !user.isActive) {
+      return res.status(401).json({
+        success: false,
+        message: "Account not found or inactive"
+      });
+    }
+
+    req.user = user;
+    next();
+
+  } catch (error) {
+    console.error("Authentication error:", error.message);
+
+    return res.status(401).json({
+      success: false,
+      message: "Session expired or invalid. Please login again."
+    });
+  }
+};
+
+const adminOnly = (req, res, next) => {
+  if (req.user?.role !== "admin") {
+    return res.status(403).json({
+      success: false,
+      message: "Admin access required"
+    });
+  }
+
+  next();
+};
+
+module.exports = { protect, adminOnly };
