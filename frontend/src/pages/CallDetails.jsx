@@ -134,6 +134,13 @@ function CallDetails() {
         )}
       </section>
 
+      {call.summary && (
+        <section className="call-details-section">
+          <h2>AI Call Summary</h2>
+          <p>{call.summary}</p>
+        </section>
+      )}
+
       <section className="call-details-section">
         <h2>Conversation Transcript</h2>
 

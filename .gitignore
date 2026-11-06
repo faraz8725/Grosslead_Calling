@@ -2,3 +2,7 @@
 node_modules
 uploads/
 *.log
+# Never commit local environment secrets
+.env
+backend/.env
+frontend/.env

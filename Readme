@@ -1,1 +1,94 @@
-"test": "echo \"Error: no test specified\" && exit 1",
+# AI Calling CRM — Vobiz outbound AI calling
+
+The existing CRM pages and manual phone calling (`tel:`) are preserved. An additional **AI Call** action is available on each lead.
+
+## What is connected
+
+- Vobiz outbound call initiation
+- Vobiz answer, hangup and media-stream webhooks
+- Bidirectional Vobiz WebSocket media stream (8 kHz G.711 μ-law)
+- Deepgram live transcription with multilingual detection
+- Groq conversational responses
+- Sarvam Hindi / Hinglish / English speech output
+- MongoDB call history, transcript, duration and summary
+- Existing manual lead entry, editing, deletion, Excel import and manual `tel:` calls remain in place
+
+## 1. Configure backend
+
+Open `backend` and create `.env` from `.env.example`. Add your own current credentials:
+
+- `MONGO_URI`
+- `JWT_SECRET`
+- `FRONTEND_URL`
+- `VOBIZ_ACCOUNT_SID`
+- `VOBIZ_API_TOKEN`
+- `VOBIZ_PHONE_NUMBER` (your Vobiz caller ID in +91 format)
+- `DEEPGRAM_API_KEY`
+- `GROQ_API_KEY`
+- `SARVAM_API_KEY`
+
+`PUBLIC_BASE_URL` is mandatory for Vobiz callbacks. It must be the **public HTTPS URL of the backend**, not the frontend URL.
+
+### Local development webhook URL
+
+Vobiz cannot call `localhost`. Start the backend, then expose port 5000 using a secure tunnel such as ngrok:
+
+```bash
+ngrok http 5000
+```
+
+Copy the HTTPS forwarding URL into `PUBLIC_BASE_URL`, for example:
+
+```env
+PUBLIC_BASE_URL=https://your-ngrok-domain.ngrok-free.app
+```
+
+Keep the tunnel running while testing calls. If the tunnel URL changes, update `PUBLIC_BASE_URL` and restart the backend.
+
+For production, set `PUBLIC_BASE_URL` to the deployed backend's HTTPS domain and ensure WebSocket upgrades on `/ws` are supported by the hosting provider.
+
+## 2. Install and run
+
+Backend:
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Frontend (new terminal):
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+If your backend is not on localhost, create `frontend/.env` from `.env.example` and set:
+
+```env
+VITE_API_URL=https://your-backend-domain.com/api
+```
+
+Restart Vite after changing environment variables.
+
+## 3. Place an AI call
+
+1. Sign in to the CRM.
+2. Open **Leads**.
+3. Click the small bot icon on a lead row and confirm.
+4. The CRM sends the outbound request through Vobiz.
+5. Once answered, the AI greets the customer, listens through Deepgram, replies through Groq and speaks through Sarvam.
+6. Open **Calls** to view call history and open a call for its transcript.
+
+The regular phone icon remains the original manual call action.
+
+## Important notes
+
+- The destination number must be a valid Indian 10-digit mobile number in the current phone normalizer.
+- Your Vobiz account must have an active, permitted caller ID/number and outbound calling enabled.
+- Use real, current API keys with sufficient credits/permissions. Trial account restrictions may prevent outbound or international calls.
+- Do not commit `.env` files. Keep all provider credentials on the backend only.
+- This project does not initiate a call automatically on page load; a user must click **AI Call** and confirm.
+- Obtain any required consent and comply with applicable telecom, privacy and do-not-call rules before placing automated calls.

@@ -7,6 +7,7 @@ import {
   Trash2,
   Pencil,
   Phone,
+  Bot,
   RefreshCw
 } from "lucide-react";
 
@@ -22,6 +23,7 @@ const Leads = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [selected, setSelected] = useState([]);
+  const [callingLeadId, setCallingLeadId] = useState("");
 
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
@@ -57,6 +59,28 @@ const Leads = () => {
   useEffect(() => {
     fetchLeads();
   }, [search, status, page]);
+
+  const handleAICall = async (lead) => {
+    if (callingLeadId) return;
+    const confirmed = window.confirm(
+      `Start an AI phone call to ${lead.name} (${lead.phone})?`
+    );
+    if (!confirmed) return;
+
+    try {
+      setCallingLeadId(lead._id);
+      const response = await api.post(`/calls/lead/${lead._id}`);
+      alert(response.data.message || "AI call request submitted.");
+    } catch (err) {
+      alert(
+        err.response?.data?.message ||
+        "AI call could not be started. Check Vobiz and backend settings."
+      );
+    } finally {
+      setCallingLeadId("");
+      fetchLeads();
+    }
+  };
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this lead?")) {
@@ -268,6 +292,16 @@ const Leads = () => {
                       >
                         <Phone size={16} />
                       </a>
+
+                      <button
+                        type="button"
+                        onClick={() => handleAICall(lead)}
+                        disabled={Boolean(callingLeadId)}
+                        title="Start AI call"
+                        aria-label={`Start AI call to ${lead.name}`}
+                      >
+                        {callingLeadId === lead._id ? "..." : <Bot size={16} />}
+                      </button>
                     </div>
                   </td>
 
@@ -307,7 +341,7 @@ const Leads = () => {
       {selected.length > 0 && (
         <div className="selected-leads-bar">
           {selected.length} leads selected.
-          <span> AI calling integration will be added in the campaign phase.</span>
+          <span> Use the bot icon on a lead row to start an AI call.</span>
         </div>
       )}
 
